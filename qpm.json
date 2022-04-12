@@ -1,0 +1,60 @@
+{
+  "sharedDir": "shared",
+  "dependenciesDir": "extern",
+  "info": {
+    "name": "SongRequestManager",
+    "id": "srm",
+    "version": "0.1.0",
+    "url": null,
+    "additionalData": {
+      "overrideSoName": "libsrm.so"
+    }
+  },
+  "dependencies": [
+    {
+      "id": "beatsaber-hook",
+      "versionRange": "^3.7.0, <3.8.0",
+      "additionalData": {
+        "extraFiles": [
+          "src/inline-hook"
+        ]
+      }
+    },
+    {
+      "id": "modloader",
+      "versionRange": "=1.2.3",
+      "additionalData": {}
+    },
+    {
+      "id": "codegen",
+      "versionRange": "^0.22.0",
+      "additionalData": {}
+    },
+    {
+      "id": "questui",
+      "versionRange": "^0.13.5",
+      "additionalData": {}
+    },
+    {
+      "id": "custom-types",
+      "versionRange": "^0.15.9",
+      "additionalData": {}
+    },
+    {
+      "id": "songdownloader",
+      "versionRange": "^0.4.4",
+      "additionalData": {}
+    },
+    {
+      "id": "songloader",
+      "versionRange": "^0.9.3",
+      "additionalData": {}
+    },
+    {
+      "id": "config-utils",
+      "versionRange": "^0.7.2",
+      "additionalData": {}
+    }
+  ],
+  "additionalData": {}
+}
