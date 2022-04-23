@@ -1,5 +1,7 @@
 #include "Main.hpp"
 
+#include "beatsaber-hook/shared/config/config-utils.hpp"
+
 #include "GlobalNamespace/LevelFilteringNavigationController.hpp"
 
 using namespace GlobalNamespace;
@@ -9,6 +11,16 @@ static ModInfo modInfo;
 Logger& getLogger() {
     static Logger* logger = new Logger(modInfo);
     return *logger;
+}
+
+std::string& GetConfigPath() {
+    static std::string configPath = Configuration::getConfigFilePath(modInfo);
+    return configPath;
+}
+
+std::string& GetDatabasePath() {
+    static std::string databasePath(getDataDir(modInfo) + "database.json");
+    return databasePath;
 }
 
 MAKE_HOOK_MATCH(LevelFilteringNavigationController_DidActivate, &LevelFilteringNavigationController::DidActivate,
