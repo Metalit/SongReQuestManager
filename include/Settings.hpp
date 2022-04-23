@@ -32,7 +32,7 @@ DECLARE_JSON_CLASS(SRM, RequestFilters,
     bool NPSMax = false;
     float NPSMaxV = 30;
     bool NJSMin = false;
-    float NPSMinV = 0;
+    float NJSMinV = 0;
     bool NJSMax = false;
     float NJSMaxV = 30;
     bool DurationMax = false;

@@ -2,7 +2,7 @@
 #include "Settings.hpp"
 
 DESERIALIZE_METHOD(SRM, Request,
-    DESERIALIZE_CLASS(Beatmap, beatmap);
+    DESERIALIZE_CLASS(Map, beatmap);
     DESERIALIZE_VALUE(Date, date, String);
     DESERIALIZE_VALUE(Requester, requester, String);
     DESERIALIZE_VALUE(NamePrefix, namePrefix, String);
@@ -10,7 +10,7 @@ DESERIALIZE_METHOD(SRM, Request,
 )
 
 SERIALIZE_METHOD(SRM, Request,
-    // SERIALIZE_CLASS(Beatmap, beatmap);
+    // SERIALIZE_CLASS(Map, beatmap);
     SERIALIZE_VALUE(Date, date);
     SERIALIZE_VALUE(Requester, requester);
     SERIALIZE_VALUE(NamePrefix, namePrefix);
