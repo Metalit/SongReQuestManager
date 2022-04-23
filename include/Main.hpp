@@ -8,3 +8,6 @@
 #define LOG_ERROR(...) getLogger().error(__VA_ARGS__)
 
 Logger& getLogger();
+
+std::string& GetConfigPath();
+std::string& GetDatabasePath();
