@@ -1,11 +1,9 @@
 #pragma once
 
-#include "custom-types/shared/macros.hpp"
+#include "TypeUtil.hpp"
 
 #include "HMUI/ViewController.hpp"
 #include "HMUI/FlowCoordinator.hpp"
-
-#define METHOD(...) il2cpp_utils::il2cpp_type_check::MetadataGetter<&__VA_ARGS__>::get()
 
 DECLARE_CLASS_CODEGEN(SRM, RequestsFlowCoordinator, HMUI::FlowCoordinator,
 
