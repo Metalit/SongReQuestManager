@@ -10,52 +10,52 @@
 #pragma GCC diagnostic pop
 
 DECLARE_JSON_CLASS(SRM, Request,
-    BeatSaver::Beatmap Map;
-    std::string Date;
-    std::string Requester;
-    std::string NamePrefix;
-    std::string Message;
+    AUTO_VALUE(BeatSaver::Beatmap, Map);
+    AUTO_VALUE(std::string, Date);
+    AUTO_VALUE(std::string, Requester);
+    AUTO_VALUE(std::string, NamePrefix);
+    AUTO_VALUE(std::string, Message);
 )
 
 DECLARE_JSON_CLASS(SRM, Database,
-    std::vector<SRM::Request> Queue;
-    std::vector<SRM::Request> History;
-    std::vector<SRM::Request> SongBlacklist;
-    std::vector<std::string> UserBlacklist;
-    std::vector<std::string> MapperBlacklist;
+    AUTO_VECTOR(SRM::Request, Queue);
+    AUTO_VECTOR(SRM::Request, History);
+    AUTO_VECTOR(SRM::Request, SongBlacklist);
+    AUTO_VECTOR(std::string, UserBlacklist);
+    AUTO_VECTOR(std::string, MapperBlacklist);
 )
 
 DECLARE_JSON_CLASS(SRM, RequestFilters, 
-    bool NoBeatSage = true;
-    bool NPSMin = false;
-    float NPSMinV = 0;
-    bool NPSMax = false;
-    float NPSMaxV = 30;
-    bool NJSMin = false;
-    float NJSMinV = 0;
-    bool NJSMax = false;
-    float NJSMaxV = 30;
-    bool DurationMax = false;
-    float DurationMaxV = 3;
-    bool VoteMin = false;
-    float VoteMinV = 0.5;
-    bool DateMin = false;
-    float DateMinV = 0;
-    bool DateMax = false;
-    float DateMaxV = 36;
+    AUTO_VALUE_DEFAULT(bool, NoBeatSage, true);
+    AUTO_VALUE_DEFAULT(bool, NPSMin, false);
+    AUTO_VALUE_DEFAULT(float, NPSMinV, 0.0f);
+    AUTO_VALUE_DEFAULT(bool, NPSMax, false);
+    AUTO_VALUE_DEFAULT(float, NPSMaxV, 30.0f);
+    AUTO_VALUE_DEFAULT(bool, NJSMin, false);
+    AUTO_VALUE_DEFAULT(float, NJSMinV, 0.0f);
+    AUTO_VALUE_DEFAULT(bool, NJSMax, false);
+    AUTO_VALUE_DEFAULT(float, NJSMaxV, 30.0f);
+    AUTO_VALUE_DEFAULT(bool, DurationMax, false);
+    AUTO_VALUE_DEFAULT(float, DurationMaxV, 3.0f);
+    AUTO_VALUE_DEFAULT(bool, VoteMin, false);
+    AUTO_VALUE_DEFAULT(float, VoteMinV, 0.5f);
+    AUTO_VALUE_DEFAULT(bool, DateMin, false);
+    AUTO_VALUE_DEFAULT(float, DateMinV, 0.0f);
+    AUTO_VALUE_DEFAULT(bool, DateMax, false);
+    AUTO_VALUE_DEFAULT(float, DateMaxV, 36.0f);
 )
 
 DECLARE_JSON_CLASS(SRM, ModConfig,
-    int UserMaxRequest = 2;
-    int VipBonusRequest = 2;
-    int SubBonusRequest = 3;
-    int HistorySize = 50;
-    bool QueueOpen = true;
-    bool ModsManageQueue = true;
-    int QueueCmdShowCount = 4;
-    int QueueCmdCooldown = 10;
-    SRM::RequestFilters Filters;
-    SRM::Database Data;
+    AUTO_VALUE_DEFAULT(int, UserMaxRequest, 2);
+    AUTO_VALUE_DEFAULT(int, VipBonusRequest, 2);
+    AUTO_VALUE_DEFAULT(int, SubBonusRequest, 3);
+    AUTO_VALUE_DEFAULT(int, HistorySize, 50);
+    AUTO_VALUE_DEFAULT(bool, QueueOpen, true);
+    AUTO_VALUE_DEFAULT(bool, ModsManageQueue, true);
+    AUTO_VALUE_DEFAULT(int, QueueCmdShowCount, 4);
+    AUTO_VALUE_DEFAULT(int, QueueCmdCooldown, 10);
+    AUTO_VALUE(SRM::RequestFilters, Filters);
+    AUTO_VALUE(SRM::Database, Data);
 )
 
 SRM::ModConfig& GetModConfig();
