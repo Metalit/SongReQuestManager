@@ -7,7 +7,7 @@ DEFINE_TYPE(SRM, SettingsFlowCoordinator);
 
 using namespace SRM;
 
-void SettingsFlowCoordinator::DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling) {
+void SettingsFlowCoordinator::DidActivate(DA_ARGS) {
     // present settings, blacklists, and filters view controllers
 }
 

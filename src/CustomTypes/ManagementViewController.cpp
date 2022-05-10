@@ -5,6 +5,6 @@ DEFINE_TYPE(SRM, ManagementViewController);
 
 using namespace SRM;
 
-void ManagementViewController::DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling) {
+DID_ACTIVATE(ManagementViewController,
     // create ui to clear, skip, ban, etc requests
-}
+)

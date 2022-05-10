@@ -4,3 +4,7 @@
 DEFINE_TYPE(SRM, FiltersViewController);
 
 using namespace SRM;
+
+DID_ACTIVATE(FiltersViewController,
+
+)

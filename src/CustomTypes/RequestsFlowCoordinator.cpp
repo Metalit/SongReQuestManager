@@ -7,7 +7,7 @@ DEFINE_TYPE(SRM, RequestsFlowCoordinator);
 
 using namespace SRM;
 
-void RequestsFlowCoordinator::DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling) {
+void RequestsFlowCoordinator::DidActivate(DA_ARGS) {
     // present management and requests view controllers
 }
 

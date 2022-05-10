@@ -1,13 +1,10 @@
 #pragma once
 
+#include "UIUtil.hpp"
+
 #include "HMUI/ViewController.hpp"
 
 #include "songdownloader/shared/Types/BeatSaver/Beatmap.hpp"
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmacro-redefined"
-#include "rapidjson-macros/shared/macros.hpp"
-#pragma GCC diagnostic pop
 
 DECLARE_JSON_CLASS(SRM, Request,
     AUTO_VALUE(BeatSaver::Beatmap, Map);
@@ -25,7 +22,7 @@ DECLARE_JSON_CLASS(SRM, Database,
     AUTO_VECTOR(std::string, MapperBlacklist);
 )
 
-DECLARE_JSON_CLASS(SRM, RequestFilters, 
+DECLARE_JSON_CLASS(SRM, RequestFilters,
     AUTO_VALUE_DEFAULT(bool, NoBeatSage, true);
     AUTO_VALUE_DEFAULT(bool, NPSMin, false);
     AUTO_VALUE_DEFAULT(float, NPSMinV, 0.0f);
@@ -55,13 +52,12 @@ DECLARE_JSON_CLASS(SRM, ModConfig,
     AUTO_VALUE_DEFAULT(int, QueueCmdShowCount, 4);
     AUTO_VALUE_DEFAULT(int, QueueCmdCooldown, 10);
     AUTO_VALUE(SRM::RequestFilters, Filters);
-    AUTO_VALUE(SRM::Database, Data);
 )
 
 SRM::ModConfig& GetModConfig();
 void SaveModConfig();
 
-void LoadDatabase();
+SRM::Database& GetDatabase();
 void SaveDatabase();
 
-void SettingsDidActivate(HMUI::ViewController* self, bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling);
+void SettingsDidActivate(HMUI::ViewController* self, DA_ARGS);

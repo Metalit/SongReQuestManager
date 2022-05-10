@@ -4,3 +4,7 @@
 DEFINE_TYPE(SRM, SettingsViewController);
 
 using namespace SRM;
+
+DID_ACTIVATE(SettingsViewController,
+
+)
