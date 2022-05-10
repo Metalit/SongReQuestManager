@@ -5,7 +5,7 @@
 
 #include "HMUI/ViewController.hpp"
 
-DECLARE_CLASS_CODEGEN(SRM, ManagementViewController, HMUI::ViewController,
+DECLARE_CLASS_CUSTOM(SRM, ManagementViewController, SRM::ViewControllerSingleton,
 
     DECLARE_OVERRIDE_METHOD(void, DidActivate, METHOD(HMUI::ViewController::DidActivate), DA_ARGS);
 )
