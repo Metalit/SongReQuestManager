@@ -1,10 +1,18 @@
 #include "Main.hpp"
+#include "CustomTypes/SettingsFlowCoordinator.hpp"
+#include "CustomTypes/RequestsFlowCoordinator.hpp"
+
+#include "questui/shared/QuestUI.hpp"
 
 #include "beatsaber-hook/shared/config/config-utils.hpp"
 
 #include "GlobalNamespace/LevelFilteringNavigationController.hpp"
+#include "GlobalNamespace/MainFlowCoordinator.hpp"
+
+#include "HMUI/ViewController_AnimationDirection.hpp"
 
 using namespace GlobalNamespace;
+using namespace SRM;
 
 static ModInfo modInfo;
 
@@ -28,7 +36,10 @@ MAKE_HOOK_MATCH(LevelFilteringNavigationController_DidActivate, &LevelFilteringN
     
     LevelFilteringNavigationController_DidActivate(self, firstActivation, addedToHierarchy, screenSystemEnabling);
 
-    // create button to present requests
+    CreateFitButton(self->selectLevelCategoryViewController, {0, 7}, "SRM", [] {
+        UnityEngine::Resources::FindObjectsOfTypeAll<MainFlowCoordinator*>().First()->YoungestChildFlowCoordinatorOrSelf()->PresentFlowCoordinator(
+            GET_SINGLETON(RequestsFlowCoordinator), nullptr, HMUI::ViewController::AnimationDirection::Horizontal, false, false);
+    });
 }
 
 extern "C" void setup(ModInfo& info) {
@@ -41,6 +52,9 @@ extern "C" void setup(ModInfo& info) {
 
 extern "C" void load() {
     il2cpp_functions::Init();
+    QuestUI::Init();
+
+    QuestUI::Register::RegisterModSettingsFlowCoordinator<SRM::SettingsFlowCoordinator*>(modInfo);
 
     LOG_INFO("Installing hooks...");
     INSTALL_HOOK(getLogger(), LevelFilteringNavigationController_DidActivate);
