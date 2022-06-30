@@ -3,8 +3,6 @@
 #include "TypeUtil.hpp"
 #include "UIUtil.hpp"
 
-#include "HMUI/FlowCoordinator.hpp"
-
 DECLARE_CLASS_CUSTOM(SRM, SettingsFlowCoordinator, SRM::FlowCoordinatorSingleton,
 
     DECLARE_OVERRIDE_METHOD(void, DidActivate, METHOD(HMUI::FlowCoordinator::DidActivate), DA_ARGS);
