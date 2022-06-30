@@ -3,6 +3,7 @@
 #include "Settings.hpp"
 
 DEFINE_TYPE(SRM, ViewControllerSingleton);
+DEFINE_TYPE(SRM, NavigationControllerSingleton);
 DEFINE_TYPE(SRM, FlowCoordinatorSingleton);
 
 using namespace SRM;
@@ -10,9 +11,14 @@ using namespace QuestUI;
 using namespace UnityEngine;
 
 std::unordered_map<Il2CppClass*, HMUI::ViewController*> ViewControllerSingleton::instanceMap;
+std::unordered_map<Il2CppClass*, HMUI::NavigationController*> NavigationControllerSingleton::instanceMap;
 std::unordered_map<Il2CppClass*, HMUI::FlowCoordinator*> FlowCoordinatorSingleton::instanceMap;
 
 void ViewControllerSingleton::dtor() {
+    instanceMap.erase(this->klass);
+}
+
+void NavigationControllerSingleton::dtor() {
     instanceMap.erase(this->klass);
 }
 

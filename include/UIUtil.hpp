@@ -2,6 +2,8 @@
 
 #include "questui/shared/BeatSaberUI.hpp"
 
+#include "HMUI/NavigationController.hpp"
+
 #define DA_ARGS bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling
 
 #define DID_ACTIVATE(name, ...) \
@@ -24,6 +26,25 @@ DECLARE_CLASS_CODEGEN(SRM, ViewControllerSingleton, HMUI::ViewController,
         }
     private:
         static std::unordered_map<Il2CppClass*, HMUI::ViewController*> instanceMap;
+)
+
+DECLARE_CLASS_CODEGEN(SRM, NavigationControllerSingleton, HMUI::NavigationController,
+
+    DECLARE_DTOR(dtor);
+
+    public:
+        template<class T> requires(std::is_base_of_v<HMUI::NavigationController, T>)
+        static T* GetInstance() {
+            static auto type = classof(T*);
+            if(!instanceMap.contains(type)) {
+                auto instance = QuestUI::BeatSaberUI::CreateViewController(il2cpp_utils::GetSystemType(type));
+                instanceMap.emplace(type, (HMUI::NavigationController*) instance);
+                return (T*) instance;
+            } else
+                return (T*) instanceMap[type];
+        }
+    private:
+        static std::unordered_map<Il2CppClass*, HMUI::NavigationController*> instanceMap;
 )
 
 DECLARE_CLASS_CODEGEN(SRM, FlowCoordinatorSingleton, HMUI::FlowCoordinator,
