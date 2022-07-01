@@ -4,3 +4,7 @@
 DEFINE_TYPE(SRM, RequestsHeaderViewController);
 
 using namespace SRM;
+
+DID_ACTIVATE(RequestsHeaderViewController,
+
+)

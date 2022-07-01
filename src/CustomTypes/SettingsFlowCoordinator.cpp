@@ -12,7 +12,7 @@ DEFINE_TYPE(SRM, SettingsFlowCoordinator);
 
 using namespace SRM;
 
-void SettingsFlowCoordinator::DidActivate(DA_ARGS) {
+void SettingsFlowCoordinator::DidActivateOverride(DA_ARGS) {
     if(addedToHierarchy)
         ProvideInitialViewControllers(GET_SINGLETON(SettingsViewController), GET_SINGLETON(FiltersViewController), GET_SINGLETON(BlacklistViewController), nullptr, nullptr);
     set_showBackButton(true);

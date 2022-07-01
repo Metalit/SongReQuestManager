@@ -1,5 +1,7 @@
 #pragma once
 
+#include "TypeUtil.hpp"
+
 #include "questui/shared/BeatSaberUI.hpp"
 
 #include "HMUI/NavigationController.hpp"
@@ -51,6 +53,8 @@ DECLARE_CLASS_CODEGEN(SRM, FlowCoordinatorSingleton, HMUI::FlowCoordinator,
 
     DECLARE_DTOR(dtor);
 
+    DECLARE_OVERRIDE_METHOD(void, DidActivate, METHOD(HMUI::FlowCoordinator::DidActivate), DA_ARGS);
+
     public:
         template<class T> requires(std::is_base_of_v<HMUI::FlowCoordinator, T>)
         static T* GetInstance() {
@@ -72,7 +76,7 @@ UnityEngine::Transform* GetSubcontainer(UnityEngine::UI::VerticalLayoutGroup* ve
 
 template<QuestUI::BeatSaberUI::HasTransform T>
 requires(!std::is_convertible_v<T, UnityEngine::Transform*>)
-QuestUI::SliderSetting* CreateIncrementSlider(T* parent, float& configValue, float increment, float min, float max, std::function<std::string(float)> format, const std::string& name, const std::string& hoverHint = "") {
+QuestUI::SliderSetting* CreateIncrementSlider(T parent, float& configValue, float increment, float min, float max, std::function<std::string(float)> format, const std::string& name, const std::string& hoverHint = "") {
     return CreateIncrementSlider(parent->get_transform(), configValue, increment, min, max, name, hoverHint);
 }
 
@@ -80,7 +84,7 @@ QuestUI::SliderSetting* CreateIncrementSlider(UnityEngine::Transform* parent, fl
 
 template<QuestUI::BeatSaberUI::HasTransform T>
 requires(!std::is_convertible_v<T, UnityEngine::Transform*>)
-UnityEngine::UI::Button* CreateFitButton(T* parent, UnityEngine::Vector2 pos, const std::string& text, const std::function<void()>& callback = nullptr) {
+UnityEngine::UI::Button* CreateFitButton(T parent, UnityEngine::Vector2 pos, const std::string& text, const std::function<void()>& callback = nullptr) {
     return CreateFitButton(parent->get_transform(), pos, text, callback);
 }
 

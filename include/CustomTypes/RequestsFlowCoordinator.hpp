@@ -5,6 +5,6 @@
 
 DECLARE_CLASS_CUSTOM(SRM, RequestsFlowCoordinator, SRM::FlowCoordinatorSingleton,
 
-    DECLARE_OVERRIDE_METHOD(void, DidActivate, METHOD(HMUI::FlowCoordinator::DidActivate), DA_ARGS);
+    DECLARE_INSTANCE_METHOD(void, DidActivateOverride, DA_ARGS);
     DECLARE_OVERRIDE_METHOD(void, BackButtonWasPressed, METHOD(HMUI::FlowCoordinator::BackButtonWasPressed), HMUI::ViewController* topViewController);
 )

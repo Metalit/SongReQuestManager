@@ -26,6 +26,10 @@ void FlowCoordinatorSingleton::dtor() {
     instanceMap.erase(this->klass);
 }
 
+void FlowCoordinatorSingleton::DidActivate(DA_ARGS) {
+    il2cpp_utils::RunMethod(this, "DidActivateOverride", firstActivation, addedToHierarchy, screenSystemEnabling);
+}
+
 Transform* GetSubcontainer(UI::VerticalLayoutGroup* vertical) {
     auto horizontal = BeatSaberUI::CreateHorizontalLayoutGroup(vertical);
     horizontal->GetComponent<UI::LayoutElement*>()->set_minHeight(8);

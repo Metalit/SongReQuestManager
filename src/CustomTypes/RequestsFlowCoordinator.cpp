@@ -12,7 +12,7 @@ DEFINE_TYPE(SRM, RequestsFlowCoordinator);
 
 using namespace SRM;
 
-void RequestsFlowCoordinator::DidActivate(DA_ARGS) {
+void RequestsFlowCoordinator::DidActivateOverride(DA_ARGS) {
     if(addedToHierarchy)
         ProvideInitialViewControllers(GET_SINGLETON(RequestsNavigationController), GET_SINGLETON(ManagementViewController), GET_SINGLETON(DownloadToPlaylistViewController), nullptr, nullptr);
     set_showBackButton(true);

@@ -7,7 +7,7 @@
 #include "songdownloader/shared/Types/BeatSaver/Beatmap.hpp"
 
 DECLARE_JSON_CLASS(SRM, Request,
-    AUTO_VALUE(BeatSaver::Beatmap, Map);
+    AUTO_VALUE(std::string, MapKey);
     AUTO_VALUE(std::string, Date);
     AUTO_VALUE(std::string, Requester);
     AUTO_VALUE(std::string, NamePrefix);
